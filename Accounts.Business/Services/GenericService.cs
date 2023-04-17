@@ -77,7 +77,11 @@ namespace Accounts.Business.Services
         {
             try
             {
-                return await _repository.ReadAsync(id);
+                T res = await _repository.ReadAsync(id);
+                if (res == null)
+                    throw new BusinessException("Not found");
+
+                return res;
             }
             catch (Exception ex)
             {
@@ -108,6 +112,10 @@ namespace Accounts.Business.Services
         {
             try
             {
+                T res = await _repository.ReadAsync(id);
+                if (res == null)
+                    throw new BusinessException("Not found");
+
                 await _repository.DeleteAsync(id);
                 await _unitOfWork.SaveAsync();
             }

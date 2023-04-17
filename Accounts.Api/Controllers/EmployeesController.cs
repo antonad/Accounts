@@ -18,18 +18,31 @@ namespace Api.Controllers
             _employeeServiceProxy = employeeServiceProxy;
         }
 
+
+        /// <summary>
+        /// Get all employees
+        /// </summary>
         [HttpGet]
         [ProducesResponseType(typeof(List<EmployeeModel>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> GetEmployees()
         {
             return Ok(await _employeeServiceProxy.GetEmployeeAsync());
         }
+
+        /// <summary>
+        ///  Get employee by Id
+        /// </summary>
+        /// <param name="id"> Employee Id</param>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(EmployeeModel), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> GetEmployee(int id)
         {
             return Ok(await _employeeServiceProxy.GetEmployeeAsync(id));
         }
+
+        /// <summary>
+        /// Create new employee
+        /// </summary>
         [HttpPost]
         [ProducesResponseType(typeof(EmployeeModel), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> Post([FromBody] EmployeeModel model)
@@ -37,6 +50,9 @@ namespace Api.Controllers
             return Ok(await _employeeServiceProxy.CreateEmployeeAsync(model));
         }
 
+        /// <summary>
+        /// Update employee
+        /// </summary>
         [HttpPut]
         public async Task<ActionResult> Put([FromBody] EmployeeModel model)
         {
@@ -44,6 +60,10 @@ namespace Api.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Delete employee
+        /// </summary>
+        /// <param name="id"> Employee Id</param>
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {

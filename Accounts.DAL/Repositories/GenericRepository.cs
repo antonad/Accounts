@@ -31,16 +31,19 @@ namespace Accounts.DAL.Repositories
             return _dbContext.Set<TEntity>().AsNoTracking();
         }
 
+        /// <inheritdoc />
         public virtual async Task<IEnumerable<TDto>> ReadAsync()
         {
             return _mapper.Map<List<TEntity>, List<TDto>>(await GetBaseQuery().ToListAsync());
         }
 
+        /// <inheritdoc />
         public virtual async Task<TDto> ReadAsync(int id)
         {
             return _mapper.Map<TDto>(await GetBaseQuery().SingleOrDefaultAsync(e => e.Id == id));
         }
 
+        /// <inheritdoc />
         public virtual async Task<TDto> CreateAsync(TDto dto)
         {
             var resultDto = _dbContext.Set<TEntity>().Add(_mapper.Map<TEntity>(dto));
@@ -49,6 +52,7 @@ namespace Accounts.DAL.Repositories
             return _mapper.Map<TDto>(resultDto.Entity);
         }
 
+        /// <inheritdoc />
         public virtual async Task UpdateAsync(TDto dto)
         {
             _dbContext.Set<TEntity>().Update(_mapper.Map<TEntity>(dto));
@@ -56,6 +60,7 @@ namespace Accounts.DAL.Repositories
             _dbContext.ChangeTracker.Clear();
         }
 
+        /// <inheritdoc />
         public virtual async Task DeleteAsync(int id)
         {
             var entity = await _dbContext.Set<TEntity>().AsNoTracking().SingleOrDefaultAsync(e => e.Id == id);

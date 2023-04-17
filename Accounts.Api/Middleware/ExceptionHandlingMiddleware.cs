@@ -1,4 +1,6 @@
-﻿using Api.Controllers;
+﻿using Accounts.Api.Models;
+using Accounts.Business;
+using Api.Controllers;
 using System.Net;
 
 namespace Accounts.Api.Middleware
@@ -19,6 +21,16 @@ namespace Accounts.Api.Middleware
             try
             {
                 await _next(context);
+            }
+            catch (BusinessException ex)
+            {
+                var err = new ErrorModel()
+                {
+                    Message = ex.Message
+                };
+
+                context.Response.StatusCode = (int)HttpStatusCode.NotFound;
+                await context.Response.WriteAsJsonAsync(err, typeof(ErrorModel));
             }
             catch (Exception ex)
             {
