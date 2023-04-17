@@ -18,3 +18,13 @@ Initial task:
 Сохранение (добавление новой и изменение существующей) информации о должности
 Удаление должности (удаление должностей к которым привязаны сотрудники должно быть заблокировано)
 API должно поддерживать Swagger или логирование (предпочтительнее Swagger)
+
+What should be implemented additionally:
+1. More comments on models and services
+2. Add DB dump to git
+3. Some testing :)
+
+What can be implemented additionally:
+1. Data seeding
+2. Split edit/view models to remove id when creating items
+3. Extended exceptions processing, user frendly error reporting.
