@@ -25,6 +25,12 @@ namespace Accounts.Api.Models
         public string Surname { get; set; }
 
         /// <summary>
+        /// Date of birth
+        /// </summary>
+        [Required]
+        public DateOnly BirthDate { get; set; }
+
+        /// <summary>
         /// List of employee positions
         /// </summary>
         [Required]

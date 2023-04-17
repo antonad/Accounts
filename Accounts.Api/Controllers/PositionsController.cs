@@ -9,12 +9,10 @@ namespace Api.Controllers
     [Route("[controller]")]
     public class PositionsController : ControllerBase
     {
-        private readonly ILogger<PositionsController> _logger;
         private readonly IPositionServiceProxy _positionServiceProxy;
 
-        public PositionsController(ILogger<PositionsController> logger, IPositionServiceProxy positionServiceProxy)
+        public PositionsController(IPositionServiceProxy positionServiceProxy)
         {
-            _logger = logger;
             _positionServiceProxy = positionServiceProxy;
         }
 

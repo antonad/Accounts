@@ -10,6 +10,7 @@ namespace Accounts.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
+        public DateOnly BirthDate { get; set; }
 
         public ICollection<EmployeeToPostion> EmployeeToPostions { get; set; }
     }

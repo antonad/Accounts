@@ -21,10 +21,9 @@ API должно поддерживать Swagger или логирование 
 
 What should be implemented additionally:
 1. More comments on models and services
-2. Add DB dump to git
-3. Some testing :)
+2. Some testing :)
 
 What can be implemented additionally:
 1. Data seeding
-2. Split edit/view models to remove id when creating items
+2. Split edit/view models to remove id when creating items, not used fields
 3. Extended exceptions processing, user frendly error reporting.

@@ -37,7 +37,12 @@ namespace Accounts.DAL.Repositories
 
             var alreadyExisting = _dbContext.Set<EmployeeToPostion>().Where(e => e.EmployeeId == dto.Id);
             _dbContext.Set<EmployeeToPostion>().RemoveRange(alreadyExisting);
+            await _dbContext.SaveChangesAsync();
 
+            _dbContext.Set<EmployeeToPostion>().AddRange(emploee.EmployeeToPostions);
+            await _dbContext.SaveChangesAsync();
+
+            emploee.EmployeeToPostions = null;
             _dbContext.Set<Employee>().Update(emploee);
             await _dbContext.SaveChangesAsync();
             _dbContext.ChangeTracker.Clear();

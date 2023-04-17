@@ -9,12 +9,10 @@ namespace Api.Controllers
     [Route("[controller]")]
     public class EmployeesController : ControllerBase
     {
-        private readonly ILogger<EmployeesController> _logger;
         private readonly IEmployeeServiceProxy _employeeServiceProxy;
 
-        public EmployeesController(ILogger<EmployeesController> logger, IEmployeeServiceProxy employeeServiceProxy)
+        public EmployeesController(IEmployeeServiceProxy employeeServiceProxy)
         {
-            _logger = logger;
             _employeeServiceProxy = employeeServiceProxy;
         }
 

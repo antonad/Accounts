@@ -17,24 +17,31 @@ namespace Accounts.Api.ServiceProxies
             _mapper = mapper;
         }
 
+        /// <inheritdoc />
         public async Task<List<PositionModel>> GetPositionAsync()
         {
             return _mapper.Map<List<PositionModel>>(await _positionService.GetAsync());
         }
+
+        /// <inheritdoc />
         public async Task<PositionModel> GetPositionAsync(int id)
         {
             return _mapper.Map<PositionModel>(await _positionService.GetAsync(id));
         }
 
+        /// <inheritdoc />
         public async Task UpdatePositionAsync(PositionModel model)
         {
             await _positionService.UpdateAsync(_mapper.Map<PositionDto>(model));
         }
+
+        /// <inheritdoc />
         public async Task<PositionModel> CreatePositionAsync(PositionModel model)
         {
             return _mapper.Map<PositionModel>(await _positionService.CreateAsync(_mapper.Map<PositionDto>(model)));
         }
 
+        /// <inheritdoc />
         public async Task DeletePositionAsync(int id)
         {
             await _positionService.DeleteAsync(id);
