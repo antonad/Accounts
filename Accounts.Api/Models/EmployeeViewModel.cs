@@ -2,7 +2,7 @@
 
 namespace Accounts.Api.Models
 {
-    public class EmployeeModel
+    public class EmployeeViewModel
     {
         /// <summary>
         /// Employee id
@@ -34,6 +34,6 @@ namespace Accounts.Api.Models
         /// List of employee positions
         /// </summary>
         [Required]
-        public List<PositionModel> Positions { get; set; }
+        public List<PositionViewModel> Positions { get; set; }
     }
 }

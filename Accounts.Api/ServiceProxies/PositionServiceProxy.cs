@@ -18,27 +18,27 @@ namespace Accounts.Api.ServiceProxies
         }
 
         /// <inheritdoc />
-        public async Task<List<PositionModel>> GetPositionAsync()
+        public async Task<List<PositionViewModel>> GetPositionAsync()
         {
-            return _mapper.Map<List<PositionModel>>(await _positionService.GetAsync());
+            return _mapper.Map<List<PositionViewModel>>(await _positionService.GetAsync());
         }
 
         /// <inheritdoc />
-        public async Task<PositionModel> GetPositionAsync(int id)
+        public async Task<PositionViewModel> GetPositionAsync(int id)
         {
-            return _mapper.Map<PositionModel>(await _positionService.GetAsync(id));
+            return _mapper.Map<PositionViewModel>(await _positionService.GetAsync(id));
         }
 
         /// <inheritdoc />
-        public async Task UpdatePositionAsync(PositionModel model)
+        public async Task UpdatePositionAsync(PositionUpdateModel model)
         {
             await _positionService.UpdateAsync(_mapper.Map<PositionDto>(model));
         }
 
         /// <inheritdoc />
-        public async Task<PositionModel> CreatePositionAsync(PositionModel model)
+        public async Task<PositionViewModel> CreatePositionAsync(PositionCreateModel model)
         {
-            return _mapper.Map<PositionModel>(await _positionService.CreateAsync(_mapper.Map<PositionDto>(model)));
+            return _mapper.Map<PositionViewModel>(await _positionService.CreateAsync(_mapper.Map<PositionDto>(model)));
         }
 
         /// <inheritdoc />

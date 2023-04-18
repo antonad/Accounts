@@ -7,25 +7,25 @@ namespace Accounts.Api.ServiceProxies.Interfaces
         /// <summary>
         /// Get all employees
         /// </summary>
-        Task<List<EmployeeModel>> GetEmployeeAsync();
+        Task<List<EmployeeViewModel>> GetEmployeeAsync();
 
         /// <summary>
         /// Get employee by Id
         /// </summary>
         /// <param name="id"> Requested employee Id</param>
-        Task<EmployeeModel> GetEmployeeAsync(int id);
+        Task<EmployeeViewModel> GetEmployeeAsync(int id);
 
         /// <summary>
         /// Create new employee
         /// </summary>
         /// <param name="model">Employee model</param>
-        Task<EmployeeModel> CreateEmployeeAsync(EmployeeModel model);
+        Task<EmployeeViewModel> CreateEmployeeAsync(EmployeeCreateModel model);
 
         /// <summary>
         /// Update existing employee
         /// </summary>
         /// <param name="model">Employee model</param>
-        Task UpdateEmployeeAsync(EmployeeModel model);
+        Task UpdateEmployeeAsync(EmployeeUpdateModel model);
 
         /// <summary>
         /// Delete employee by id

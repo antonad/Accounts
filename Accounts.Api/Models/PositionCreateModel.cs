@@ -2,14 +2,8 @@
 
 namespace Accounts.Api.Models
 {
-    public class PositionModel
+    public class PositionCreateModel
     {
-        /// <summary>
-        /// Position id
-        /// </summary>
-        [Required]
-        public int Id { get; set; }
-
         /// <summary>
         /// Position name
         /// </summary>

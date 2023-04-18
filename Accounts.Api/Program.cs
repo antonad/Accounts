@@ -6,6 +6,7 @@ using Accounts.Business.Services;
 using Accounts.Business.Services.Interfaces;
 using Accounts.DAL;
 using Accounts.Dto;
+using Accounts.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -24,8 +25,25 @@ builder.Services.AddScoped<IPositionServiceProxy, PositionServiceProxy>();
 
 builder.Services.AddAutoMapper(cfg =>
 {
-    cfg.CreateMap<EmployeeDto, EmployeeModel>().ReverseMap().PreserveReferences();
-    cfg.CreateMap<PositionDto, PositionModel>().ReverseMap().PreserveReferences();
+    cfg.CreateMap<EmployeeDto, EmployeeViewModel>().ReverseMap().PreserveReferences();
+    cfg.CreateMap<EmployeeCreateModel, EmployeeDto>()
+        .ForMember(dest => dest.Positions, opt => opt.MapFrom(src => src.Positions.Select(x =>
+                        new PositionDto()
+                        {
+                            Id = x
+                        }).ToList()))
+                    .PreserveReferences();
+    cfg.CreateMap<EmployeeUpdateModel, EmployeeDto>()
+        .ForMember(dest => dest.Positions, opt => opt.MapFrom(src => src.Positions.Select(x =>
+                        new PositionDto()
+                        {
+                            Id = x
+                        }).ToList()))
+                    .PreserveReferences();
+
+    cfg.CreateMap<PositionDto, PositionViewModel>().ReverseMap().PreserveReferences();
+    cfg.CreateMap<PositionDto, PositionCreateModel>().ReverseMap().PreserveReferences();
+    cfg.CreateMap<PositionDto, PositionUpdateModel>().ReverseMap().PreserveReferences();
 });
 
 // Add services to the container.

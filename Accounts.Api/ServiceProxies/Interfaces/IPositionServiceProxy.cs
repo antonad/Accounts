@@ -7,25 +7,25 @@ namespace Accounts.Api.ServiceProxies.Interfaces
         /// <summary>
         /// Get all positions
         /// </summary>
-        Task<List<PositionModel>> GetPositionAsync();
+        Task<List<PositionViewModel>> GetPositionAsync();
 
         /// <summary>
         /// Get position by Id
         /// </summary>
         /// <param name="id"> Requested position Id</param>
-        Task<PositionModel> GetPositionAsync(int id);
+        Task<PositionViewModel> GetPositionAsync(int id);
 
         /// <summary>
         /// Create new position
         /// </summary>
         /// <param name="model">Position model</param>
-        Task<PositionModel> CreatePositionAsync(PositionModel model);
+        Task<PositionViewModel> CreatePositionAsync(PositionCreateModel model);
 
         /// <summary>
         /// Update existing position
         /// </summary>
         /// <param name="model">Position model</param>
-        Task UpdatePositionAsync(PositionModel model);
+        Task UpdatePositionAsync(PositionUpdateModel model);
 
         /// <summary>
         /// Delete position by id

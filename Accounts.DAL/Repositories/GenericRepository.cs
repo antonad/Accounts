@@ -49,7 +49,7 @@ namespace Accounts.DAL.Repositories
             var resultDto = _dbContext.Set<TEntity>().Add(_mapper.Map<TEntity>(dto));
             await _dbContext.SaveChangesAsync();
             _dbContext.ChangeTracker.Clear();
-            return _mapper.Map<TDto>(resultDto.Entity);
+            return await ReadAsync(resultDto.Entity.Id);
         }
 
         /// <inheritdoc />

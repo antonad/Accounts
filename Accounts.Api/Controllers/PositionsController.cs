@@ -20,7 +20,7 @@ namespace Api.Controllers
         /// Get all positions
         /// </summary>
         [HttpGet]
-        [ProducesResponseType(typeof(List<PositionModel>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(List<PositionViewModel>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> GetPositions()
         {
             return Ok(await _positionServiceProxy.GetPositionAsync());
@@ -31,7 +31,7 @@ namespace Api.Controllers
         /// </summary>
         /// <param name="id">Position Id</param>
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(PositionModel), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(PositionViewModel), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> GetPosition(int id)
         {
             return Ok(await _positionServiceProxy.GetPositionAsync(id));
@@ -41,8 +41,8 @@ namespace Api.Controllers
         /// Create new position
         /// </summary>
         [HttpPost]
-        [ProducesResponseType(typeof(PositionModel), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult> Post([FromBody] PositionModel model)
+        [ProducesResponseType(typeof(PositionViewModel), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult> Post([FromBody] PositionCreateModel model)
         {
             return Ok(await _positionServiceProxy.CreatePositionAsync(model));
         }
@@ -51,7 +51,7 @@ namespace Api.Controllers
         /// Update position
         /// </summary>
         [HttpPut]
-        public async Task<ActionResult> Put([FromBody] PositionModel model)
+        public async Task<ActionResult> Put([FromBody] PositionUpdateModel model)
         {
             await _positionServiceProxy.UpdatePositionAsync(model);
             return Ok();

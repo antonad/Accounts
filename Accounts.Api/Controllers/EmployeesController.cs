@@ -21,7 +21,7 @@ namespace Api.Controllers
         /// Get all employees
         /// </summary>
         [HttpGet]
-        [ProducesResponseType(typeof(List<EmployeeModel>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(List<EmployeeViewModel>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> GetEmployees()
         {
             return Ok(await _employeeServiceProxy.GetEmployeeAsync());
@@ -32,7 +32,7 @@ namespace Api.Controllers
         /// </summary>
         /// <param name="id"> Employee Id</param>
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(EmployeeModel), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(EmployeeViewModel), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> GetEmployee(int id)
         {
             return Ok(await _employeeServiceProxy.GetEmployeeAsync(id));
@@ -42,8 +42,8 @@ namespace Api.Controllers
         /// Create new employee
         /// </summary>
         [HttpPost]
-        [ProducesResponseType(typeof(EmployeeModel), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult> Post([FromBody] EmployeeModel model)
+        [ProducesResponseType(typeof(EmployeeViewModel), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult> Post([FromBody] EmployeeCreateModel model)
         {
             return Ok(await _employeeServiceProxy.CreateEmployeeAsync(model));
         }
@@ -52,7 +52,7 @@ namespace Api.Controllers
         /// Update employee
         /// </summary>
         [HttpPut]
-        public async Task<ActionResult> Put([FromBody] EmployeeModel model)
+        public async Task<ActionResult> Put([FromBody] EmployeeUpdateModel model)
         {
             await _employeeServiceProxy.UpdateEmployeeAsync(model);
             return Ok();

@@ -2,7 +2,6 @@
 using Accounts.DAL.Repositories.Interfaces;
 using Accounts.Dto;
 using Accounts.Entities;
-using Accounts.Entities.Interfaces;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,10 +36,8 @@ namespace Accounts.DAL.Repositories
 
             var alreadyExisting = _dbContext.Set<EmployeeToPostion>().Where(e => e.EmployeeId == dto.Id);
             _dbContext.Set<EmployeeToPostion>().RemoveRange(alreadyExisting);
-            await _dbContext.SaveChangesAsync();
 
             _dbContext.Set<EmployeeToPostion>().AddRange(emploee.EmployeeToPostions);
-            await _dbContext.SaveChangesAsync();
 
             emploee.EmployeeToPostions = null;
             _dbContext.Set<Employee>().Update(emploee);
