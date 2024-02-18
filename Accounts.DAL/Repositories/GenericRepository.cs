@@ -22,9 +22,9 @@ namespace Accounts.DAL.Repositories
             _mapper = mapper;
         }
 
-        /// <summary>Gets the base query. Can be overriden in inherited classes</summary>
+        /// <summary>Gets the base query. Can be overridden in inherited classes</summary>
         /// <returns>
-        /// Base query for futher usages
+        /// Base query for further usages
         /// </returns>
         protected virtual IQueryable<TEntity> GetBaseQuery()
         {
